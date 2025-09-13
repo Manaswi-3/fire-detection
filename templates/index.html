@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Fire Detection System</h1>
+        <p>Upload an image to detect fire:</p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Detect Fire</button>
+        </form>
+
+        {% if result %}
+            <h2>Result: {{ result }}</h2>
+            <img src="{{ url_for('static', filename='uploads/' + image_path.split('/')[-1]) }}" alt="Uploaded Image" style="max-width: 500px;">
+        {% endif %}
+    </div>
+</body>
+</html>
